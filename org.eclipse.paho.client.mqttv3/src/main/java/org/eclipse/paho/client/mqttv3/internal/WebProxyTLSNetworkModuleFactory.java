@@ -50,7 +50,7 @@ public class WebProxyTLSNetworkModuleFactory implements NetworkModuleFactory {
         SocketFactory factory = options.getSocketFactory();
         SSLSocketFactoryFactory factoryFactory = null;
         if (factory == null) {
-=            factoryFactory = new SSLSocketFactoryFactory();
+            factoryFactory = new SSLSocketFactoryFactory();
             Properties sslClientProps = options.getSSLProperties();
             if (null != sslClientProps) {
                 factoryFactory.initialize(sslClientProps, null);
