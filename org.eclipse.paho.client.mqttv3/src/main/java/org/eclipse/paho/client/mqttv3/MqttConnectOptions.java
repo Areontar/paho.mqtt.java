@@ -17,6 +17,7 @@
  */
 package org.eclipse.paho.client.mqttv3;
 
+import java.net.URI;
 import java.util.Properties;
 
 import javax.net.SocketFactory;
@@ -74,6 +75,7 @@ public class MqttConnectOptions {
 	private boolean automaticReconnect = false;
 	private int maxReconnectDelay = 128000;
 	private Properties customWebSocketHeaders = null;
+	private URI webproxyURI = null;
 
 	// Client Operation Parameters
 	private int executorServiceTimeout = 1; // How long to wait in seconds when terminating the executor service.
@@ -592,6 +594,22 @@ public class MqttConnectOptions {
 	}
 
 	/**
+	 * get the Webproxy URI in with the format [scheme]://[host]:[port]
+	 * @return the formated URI
+	 */
+	public URI getWebproxyURI() {
+		return webproxyURI;
+	}
+
+	/**
+	 * set the Webproxy URI in with the format [scheme]://[host]:[port]
+	 * @param webproxyURI
+	 */
+	public void setWebproxyURI(URI webproxyURI) {
+		this.webproxyURI = webproxyURI;
+	}
+
+	/**
 	 * Sets the MQTT version. The default action is to connect with version 3.1.1,
 	 * and to fall back to 3.1 if that fails. Version 3.1.1 or 3.1 can be selected
 	 * specifically, with no fall back, by using the MQTT_VERSION_3_1_1 or
@@ -700,5 +718,4 @@ public class MqttConnectOptions {
 	public String toString() {
 		return Debug.dumpProperties(getDebug(), "Connection options");
 	}
-	
 }
